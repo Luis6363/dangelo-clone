@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Pacifico&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 30% 65%;
+    --foreground: 20 43% 30%;
+
+    --card: 120 30% 65%;
+    --card-foreground: 20 43% 30%;
+
+    --popover: 120 30% 65%;
+    --popover-foreground: 20 43% 30%;
+
+    --primary: 120 30% 65%;
+    --primary-foreground: 20 43% 30%;
+
+    --secondary: 95 67% 49%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 95 67% 49%;
+    --muted-foreground: 20 43% 30%;
+
+    --accent: 350 73% 70%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 20 43% 30%;
+    --input: 20 43% 30%;
+    --ring: 20 43% 30%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Pacifico', cursive;
+  }
+}
+
+/* Custom classes for D'Angelo specific styling */
+.dangelo-logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: white;
+}
+
+.dangelo-bg-primary {
+  background-color: #98bfa0;
+}
+
+.dangelo-bg-secondary {
+  background-color: #6d4b2d;
+}
+
+.dangelo-bg-accent {
+  background-color: #92c634;
+}
+
+.dangelo-text-accent {
+  color: #92c634;
+}
+
+.dangelo-cherry {
+  color: #e75981;
+}
+
+.dangelo-section {
+  padding: 3rem 1rem;
+}
+
+.dangelo-menu-button {
+  background-color: #92c634;
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.dangelo-menu-button:hover {
+  background-color: #7daa2c;
+  transform: translateY(-2px);
+}
+
+.dangelo-delivery-button {
+  background-color: #6d4b2d;
+  color: white;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.dangelo-delivery-button:hover {
+  background-color: #5a3e26;
+  transform: translateY(-2px);
+}
+
+.dangelo-online-button {
+  background-color: #ff5a5a;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.dangelo-online-button:hover {
+  background-color: #ff3c3c;
+  transform: translateY(-2px);
+}

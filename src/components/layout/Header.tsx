@@ -3,8 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut, LayoutDashboard, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,20 +75,33 @@ export function Header() {
           </Link>
 
           {isLoggedIn ? (
-            <div className="flex items-center gap-4">
-              <div className="text-white text-sm">
-                Hello, {user?.name || user?.email || 'User'}
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-white hover:text-white/80 p-2"
-                onClick={handleLogout}
-              >
-                <LogOut className="h-4 w-4 mr-1" />
-                Logout
-              </Button>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-white hover:text-white/80 px-2 py-1 h-auto">
+                  <User className="h-4 w-4 mr-2" />
+                  <span>{user?.name?.split(' ')[0] || user?.email?.split('@')[0] || 'User'}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard" className="flex items-center cursor-pointer">
+                    <LayoutDashboard className="mr-2 h-4 w-4" />
+                    <span>Dashboard</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/profile" className="flex items-center cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout} className="text-red-500 cursor-pointer">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/login" className="text-white hover:text-white/80 text-sm font-bold">
@@ -151,6 +171,22 @@ export function Header() {
                 <div className="text-white text-sm pt-2 border-t border-white/20">
                   Hello, {user?.name || user?.email || 'User'}
                 </div>
+                <Link
+                  href="/dashboard"
+                  className="text-white hover:text-white/80 text-sm font-bold flex items-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <LayoutDashboard className="h-4 w-4 mr-1" />
+                  Dashboard
+                </Link>
+                <Link
+                  href="/profile"
+                  className="text-white hover:text-white/80 text-sm font-bold flex items-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Settings className="h-4 w-4 mr-1" />
+                  Profile
+                </Link>
                 <button
                   className="text-white hover:text-white/80 text-sm font-bold flex items-center"
                   onClick={handleLogout}

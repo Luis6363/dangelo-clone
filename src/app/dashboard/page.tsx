@@ -7,12 +7,21 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Bell, ShoppingBag, MapPin, Calendar, CreditCard } from "lucide-react";
+import { Bell, ShoppingBag, MapPin } from "lucide-react";
+
+// Define an interface for the order type
+interface Order {
+  id: string;
+  date: string;
+  status: string;
+  total: string;
+  items: string[];
+}
 
 export default function Dashboard() {
   const router = useRouter();
   const [user, setUser] = useState<{ name: string; email: string } | null>(null);
-  const [recentOrders, setRecentOrders] = useState<any[]>([]);
+  const [recentOrders, setRecentOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -45,7 +54,7 @@ export default function Dashboard() {
     return (
       <div className="container mx-auto py-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
           <p className="mt-4 text-lg">Duke u ngarkuar...</p>
         </div>
       </div>
